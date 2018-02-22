@@ -253,3 +253,9 @@ img:hover {-webkit-filter:none;}
 .close {
 
 }
+
+.myname {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
