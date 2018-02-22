@@ -1,0 +1,255 @@
+.body {
+    
+    } 
+
+.jumbotron {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 5px 0px 5px 0px;
+    margin-bottom: 0;
+    }
+
+.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    }
+
+.nav-tabs {
+    margin-bottom: 0;
+    }
+
+.page-header {
+    text-align: center;
+    font-family: 'Lato';
+    margin-top: 5px;
+    }
+
+.media-body {
+
+}
+
+.media-heading {
+   font-weight: bold; 
+}
+
+.thesis {
+
+}
+
+.topic {
+    text-align: center;
+}
+
+
+.table tr:hover {background-color: dimgrey;}
+
+.caption {
+    text-align: center;
+}
+
+#mealweek {
+    display: none;
+}
+
+#ingfunctions {
+    display: none;
+    text-align: center;
+}
+
+.day {
+    font-family: 'Oswald';
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 0;
+}
+
+.tableheader {
+    margin: auto;
+    text-align: left;
+}
+
+.header {
+    text-align: center;
+}
+
+#ingtable {
+    display: none;
+    margin: auto;
+}
+
+.thumbnail {
+    padding:10px;
+    border:0;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 100%;
+    
+}
+
+.row.equal {
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+ 
+#inglistheader {
+    text-align: left;
+}
+
+#inglist {
+    text-align: left;
+}
+
+.image {
+    transition: filter 1s ease-in;
+}
+
+img:hover {-webkit-filter:none;}
+
+/*.btn-default:hover {-webkit-filter: sepia(100%);}*/
+
+.btn-default {
+    margin-top: 5pt;
+    font-family: 'Oswald';
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 1px;
+    outline: none !important;
+}
+
+#rbutton {
+    display: none;
+}
+
+#maintitle {
+    font-size: 4em;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+    padding: 0px 0px 5px 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#generate {
+
+
+}
+
+.name {
+/*    font-size: 1em;*/
+    font-family: 'Lato';
+    font-weight: 500;
+}
+
+.btn-danger {
+    font-family: 'Oswald';
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 2px;
+    background-color: black;
+    outline: none !important;
+}
+
+.btn-success {
+    font-family: 'Oswald';
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 2px;
+    outline: none !important;
+    background-color: black;
+}
+
+.definitions {
+    font-family: 'Lato';
+    font-size: large;
+
+}
+
+#inglistbody {
+    font-family: 'Lato';
+}
+
+.footer {
+    text-align: center;
+    font-family: 'Lato';
+}
+
+.btn-warning {
+    margin-top: 5pt;
+    font-family: 'Oswald';
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 1px;
+    outline: none !important;
+    color: #ff9800;
+    background-color: white;
+}
+
+.btn {
+    outline: none !important;
+}
+
+.btn:focus {
+    outline: none !important;
+}
+
+.modal-title {
+    font-size: 4em;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+    padding: 0px 0px 5px 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.btn-secondary {
+        margin-top: 5pt;
+    font-family: 'Oswald';
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 1px;
+    outline: none !important;
+}
+
+.btn-primary {
+    margin-top: 5pt;
+    font-family: 'Oswald';
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 1px;
+    outline: none !important;
+}
+
+.modal-footer {
+    text-align: center;
+}
+
+.instructions {
+
+}
+
+.instructionsheader {
+    font-family: 'Oswald';
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.close {
+
+}

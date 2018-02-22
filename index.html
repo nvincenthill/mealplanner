@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+        <title class="title">Meal Planning</title>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="main.css">
+        
+        <link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=EB Garamond' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+        
+        <script src="p5.min.js"></script>
+        <script src="p5.dom.min.js"></script>
+        <script src="p5.sound.min.js"></script>
+        <script src="sketch.js"></script>
+    </head>
+    
+    <body>
+        <div class="jumbotron">
+            <h1 id="maintitle">Hey Mel... What do You Want for Dinner this Week?</h1>
+                <p> 
+                    <button type="submit" class = "btn btn-danger btn-lg" id="generate"> Let the robots decide... </button>
+                </p>
+                    <div id="ingfunctions">
+                <p> 
+                    <button type="submit" class = "btn btn-success btn-lg" id="ibutton"> What do we need? </button>
+                    <button type="submit" class = "btn btn-success btn-lg" id="rbutton"> Refresh </button>
+                </p>
+                    </div>
+                <div id="ingtable"> 
+                    <table id ="inglist" class="table">
+                      <thead id ="inglistheader" class="tableheader">
+                        <tr>
+                          <th scope="col">Type</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Quantity</th>
+                          <th scope="col">Units</th>
+                        </tr>
+                      </thead>
+                      <tbody id ="inglistbody">
+                      </tbody>
+                    </table>
+                </div>
+        </div>
+        
+        <div id="mealweek" class="container">
+            <div class="row">
+              <div class="col-lg-2 col-md-2.4 col-sm-12 col-xs-12">
+                <div class="thumbnail">
+                <h2 class="day">Monday</h2>
+                <img id="dinnerimg1" class="image" src="" alt="...">
+                <div class="caption">
+                    <h3 id="dinnername1" class = "name">Monday</h3>
+                    <p id="dinnerdef1" class="definitions"> </p>
+                    <p><a href="#" class="btn btn-default" role="button" id="modal1" data-toggle="modal" data-target="#exampleModalCenter">Instructions</a>
+                        <a href="#" class="btn btn-warning" role="button" id="delete1" onclick=remove_item()>Remove</a>
+                    </p>
+                  </div>
+                  </div>
+              </div>
+                
+              <div class="col-lg-2 col-md-2.4 col-sm-12 col-xs-12">
+                <div class="thumbnail">
+                  <h2 class="day" >Tuesday</h2>
+                  <img id="dinnerimg2" class="image" src="" alt="...">
+                  <div class="caption">
+                    <h3 id="dinnername2" class = "name">Tuesday</h3>
+                    <p id="dinnerdef2" class="definitions"> </p>
+                    <p><a href="#" class="btn btn-default" id="modal2" role="button" data-toggle="modal" data-target="#exampleModalCenter">Instructions</a>
+                        <a href="#" class="btn btn-warning" role="button" id="delete2" onclick=remove_item()>Remove</a>
+                      </p>
+                  </div>
+                </div>
+              </div>
+                
+              <div class="col-lg-2 col-md-2.4 col-sm-12 col-xs-12">
+                <div class="thumbnail">
+                  <h2 class="day">Wednesday</h2>
+                  <img id="dinnerimg3" class="image" src="" alt="...">
+                  <div class="caption">
+                    <h3 id="dinnername3" class = "name">Wednesday</h3>
+                    <p id="dinnerdef3" class="definitions"> </p>
+                    <p><a href="#" class="btn btn-default" id="modal3" role="button" data-toggle="modal" data-target="#exampleModalCenter">Instructions</a>
+                        <a href="#" class="btn btn-warning" role="button" id="delete3" onclick=remove_item()>Remove</a>
+                      </p>
+                  </div>
+                </div>
+              </div>
+                
+              <div class="col-lg-2 col-md-2.4 col-sm-12 col-xs-12">
+                <div class="thumbnail">
+                    <h2 class="day">Thursday</h2>
+                    <img id="dinnerimg4" class="image" src="" alt="...">
+                  <div class="caption">
+                    <h3 id="dinnername4" class = "name">Thursday</h3>
+                    <p id="dinnerdef4" class="definitions"> </p>
+                    <p><a href="#" class="btn btn-default" id="modal4" role="button" data-toggle="modal" data-target="#exampleModalCenter">Instructions</a>
+                        <a href="#" class="btn btn-warning" role="button" id="delete4" onclick=remove_item()>Remove</a>
+                      </p>
+                  </div>
+                </div>
+              </div>
+                
+              <div class="col-lg-2 col-md-2.4 col-sm-12 col-xs-12">
+                <div class="thumbnail">
+                  <h2 class="day">Friday</h2>
+                  <img id="dinnerimg5" class="image" src="" alt="...">
+                  <div class="caption">
+                    <h3 id="dinnername5" class = "name">Friday</h3>
+                    <p id="dinnerdef5" class="definitions"> </p>
+                    <p><a href="#" class="btn btn-default" id="modal5" role="button" data-toggle="modal" data-target="#exampleModalCenter">Instructions</a>
+                        <a href="#" class="btn btn-warning" role="button" id="delete5" onclick=remove_item()>Remove</a>
+                      </p>
+                  </div>
+                </div>
+              </div>
+                
+              <div class="col-lg-2 col-md-2.4 col-sm-12 col-xs-12">
+                <div class="thumbnail">
+                  <h2 class="day">Saturday</h2>
+                  <img id="dinnerimg6" class="image" src="" alt="...">
+                  <div class="caption">
+                    <h3 id="dinnername6" class = "name">Saturday</h3>
+                    <p id="dinnerdef6" class="definitions"> </p>
+                    <p><a href="#" class="btn btn-default" id="modal6" role="button" data-toggle="modal" data-target="#exampleModalCenter">Instructions</a>
+                        <a href="#" class="btn btn-warning" role="button" id="delete6" onclick=remove_item()>Remove</a>
+                      </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+        <div class="footer"> 
+            <h4> Created by <b> Nicholas Vincent-Hill </b> in <b> 2018 </b> </h4>
+        </div>
+         
+
+<!--
+                    <button type="button" data-toggle="modal" data-target="#exampleModalCenter" >
+
+                    </button>
+-->
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Title of Recipe Here</h5>
+              </div>
+              <div class="modal-body">
+                <div class="instructions"> 
+                  <h2 class="instructionsheader"> Instructions</h2>
+                </div>
+                <div>
+                    <ul class="list-group">
+                      <li class="list-group-item">Cras justo odio</li>
+                      <li class="list-group-item">Dapibus ac facilisis in</li>
+                      <li class="list-group-item">Morbi leo risus</li>
+                      <li class="list-group-item">Porta ac consectetur ac</li>
+                      <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-default" class="close" data-dismiss="modal" type="button">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>
