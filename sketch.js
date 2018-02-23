@@ -1,38 +1,14 @@
 //meal planning and shopping list generator
 
 let recipes;
-
-let dinnername1;
-let dinnername2;
-let dinnername3;
-let dinnername4;
-let dinnername5;
-let dinnername6;
-
-let dinnerdef1;
-let dinnerdef2;
-let dinnerdef3;
-let dinnerdef4;
-let dinnerdef5;
-let dinnerdef6;
-
-let img1;
-let img2; 
-let img3; 
-let img4; 
-let img5; 
-let img6; 
-
 let gbutton;
 let ibutton;
 let dbutton;
-let rbutton;
-
+let hbutton;
 let foodImages;
-
 let rand_recipes = [];
 let grocerylist;
-let arr = ["#dinnerimg1", "#dinnerimg2", "#dinnerimg3", "#dinnerimg4", "#dinnerimg5", "#dinnerimg6"]
+let groceryListDisplay = false;
 let arr_rows;
 
 function setup() {
@@ -44,16 +20,25 @@ function setup() {
     
     dbutton = selectAll('.btn-warning');
         for (let i = 0; i < dbutton.length; i++) {
-            dbutton[i].mousePressed(function() { remove_item(i);});
-            dbutton[i].mouseOver(function() { desaturateImage(i);});
-            dbutton[i].mouseOut (function() { saturateImage(i);});
+            dbutton[i].mousePressed(function() { removeRecipe(i);});
+//            dbutton[i].mouseOver(function() { desaturateImage(i);});
+//            dbutton[i].mouseOut (function() { saturateImage(i);});
         }
-
     ibutton = select("#ibutton");
-            ibutton.mousePressed(writeInventory);
-    rbutton = select("#rbutton");
-            rbutton.mousePressed(refreshInventory);
+        ibutton.mousePressed(createThenDisplay);
+    hbutton = select("#hbutton");
+            hbutton.mousePressed(hideGroceryList);
+}
 
+function draw() {
+    background(0);
+}
+
+function createThenDisplay() {
+    console.log("Creating then displaying grocery list...");
+    refreshInventory();
+    createGroceryList();
+    displayGroceryList();
 }
 
 //function changeRowColor(i) {
@@ -61,19 +46,18 @@ function setup() {
 //    temp.style("background-color", "green");   
 //}
 
-function desaturateImage(i) {
-    let temp = select(arr[i]);
-    temp.style("-webkit-filter", "grayscale(100%)")       
-}
-
-function saturateImage(j) {
-    let temp = select(arr[j]);
-    temp.style("-webkit-filter", "none")      
-}
+//function desaturateImage(i) {
+//    let temp = select(arr[i]);
+//    temp.style("-webkit-filter", "grayscale(100%)")       
+//}
+//
+//function saturateImage(j) {
+//    let temp = select(arr[j]);
+//    temp.style("-webkit-filter", "none")      
+//}
 
 function gotData(data) {
     recipes = data;
-//    console.log(data);
 }
 
 function randomize() {
@@ -87,10 +71,11 @@ function randomize() {
         }
     }
     console.table(rand_recipes);
-    writeoutdata()
+    displayMenu()
 }
 
-function remove_item(k) {
+function removeRecipe(k) {
+    console.log("Removing Recipe...");
     for (let i = 0; i < 1 ; i++) { 
         let temp = random(recipes)
             if (!rand_recipes.includes(temp)) {
@@ -99,61 +84,53 @@ function remove_item(k) {
                 i --;
             }
     }
-    
-    writeoutdata()
-//    console.log(rand_recipes)
-//    console.log("DONE")
+    refreshInventory();
+    console.log("I removed an item");
 }
 
-function writeoutdata() {
+function displayMenu() {
+    console.log("Displaying Menu...");
+    let dinnerNameArr = ["dinnername1", "dinnername2", "dinnername3", "dinnername4", "dinnername5", "dinnername6"];
+    let dinnerDefArr = ["dinnerdef1", "dinnerdef2", "dinnerdef3", "dinnerdef4", "dinnerdef5", "dinnerdef6"];
+    let dinnerImgArr = ["dinnerimg1", "dinnerimg2", "dinnerimg3", "dinnerimg4", "dinnerimg5", "dinnerimg6"];
+    let dinnerModalButnsArr = ["modal1", "modal2", "modal3", "modal4", "modal5", "modal6"];
+    let directionsModalHeaderIdArr = ["directionsheader1"]
+    let modalRecipeName = ["nameOfRecipe1", "nameOfRecipe2", "nameOfRecipe3", "nameOfRecipe4", "nameOfRecipe5", "nameOfRecipe6"]
+    let modalRestName = ["nameOfRestaurant1", "nameOfRestaurant2", "nameOfRestaurant3", "nameOfRestaurant4", "nameOfRestaurant5", "nameOfRestaurant6"];
+    let mapsArr = ["map1", "map2", "map3", "map4", "map5", "map6"];
     
-    dinnername1 = document.getElementById("dinnername1");
-        dinnername1.innerHTML = rand_recipes[0].name;
-    dinnername2 = document.getElementById("dinnername2");
-        dinnername2.innerHTML = rand_recipes[1].name;
-    dinnername3 = document.getElementById("dinnername3");
-        dinnername3.innerHTML = rand_recipes[2].name;
-    dinnername4 = document.getElementById("dinnername4");
-        dinnername4.innerHTML = rand_recipes[3].name;
-    dinnername5 = document.getElementById("dinnername5");
-        dinnername5.innerHTML = rand_recipes[4].name;
-    dinnername6 = document.getElementById("dinnername6");
-        dinnername6.innerHTML = rand_recipes[5].name;
+        for (let i = 0; i < dinnerNameArr.length; i++) {
+            let temp = document.getElementById(dinnerNameArr[i]);
+            temp.innerHTML = rand_recipes[i].name;
+            let temp2 = document.getElementById(dinnerDefArr[i]);
+            temp2.innerHTML = rand_recipes[i].description;
+            let temp3 = document.getElementById(dinnerImgArr[i]);
+            temp3.src = `images/${rand_recipes[i].image}`;
+                if (rand_recipes[i]['@type'] == "Restaurant") {
+                    let temp4 = document.getElementById(dinnerModalButnsArr[i]);
+                    temp4.innerHTML = "Directions";
+                    temp4.setAttribute("data-target", `#restaurantModal${i + 1}`);
+                    let temp7 = document.getElementById(modalRestName[i]);
+                    temp7.innerHTML = rand_recipes[i].name;
+                    
+                        let mapOptions = {
+                            center: new google.maps.LatLng(rand_recipes[i].lat, rand_recipes[i].lng),
+                            zoom: 18,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP,
+                            clickableIcons: true
+                            }
+
+                        let map = new google.maps.Map(document.getElementById(mapsArr[i]), mapOptions);
+                    
+                } else {
+                    let temp5 = document.getElementById(dinnerModalButnsArr[i]);
+                    temp5.innerHTML = "Instructions";
+                    temp5.setAttribute("data-target", `#recipeModal${i + 1}`);
+                    let temp6 = document.getElementById(modalRecipeName[i]);
+                    temp6.innerHTML = rand_recipes[i].name;
+                }
+        }
     
-    dinnerdef1 = document.getElementById("dinnerdef1");
-        dinnerdef1.innerHTML = rand_recipes[0].description;
-    dinnerdef2 = document.getElementById("dinnerdef2");
-        dinnerdef2.innerHTML = rand_recipes[1].description;
-    dinnerdef3 = document.getElementById("dinnerdef3");
-        dinnerdef3.innerHTML = rand_recipes[2].description;
-    dinnerdef4 = document.getElementById("dinnerdef4");
-        dinnerdef4.innerHTML = rand_recipes[3].description;
-    dinnerdef5 = document.getElementById("dinnerdef5");
-        dinnerdef5.innerHTML = rand_recipes[4].description;
-    dinnerdef6 = document.getElementById("dinnerdef6");
-        dinnerdef6.innerHTML = rand_recipes[5].description;
-    
-    
-//    foodimages = selectAll('.image');
-//        for (let i = 0; i < foodimages.length; i++) {
-//            let temp = select("dinnerimg${i}"); 
-//            foodimages[i].src = `images/${rand_recipes[i].image}`;
-//        }
-    
-    img1 = document.getElementById("dinnerimg1");
-        img1.src = `images/${rand_recipes[0].image}`;
-    img2 = document.getElementById("dinnerimg2");
-        img2.src = `images/${rand_recipes[1].image}`;
-    img3 = document.getElementById("dinnerimg3");
-        img3.src = `images/${rand_recipes[2].image}`;
-    img4 = document.getElementById("dinnerimg4");
-        img4.src = `images/${rand_recipes[3].image}`;
-    img5 = document.getElementById("dinnerimg5");
-        img5.src = `images/${rand_recipes[4].image}`;
-    img6 = document.getElementById("dinnerimg6");
-        img6.src = `images/${rand_recipes[5].image}`;
-    
-    createInventory();
     let mealweek = select("#mealweek");
     mealweek.style("display" , "inline");
     let ingfunctions = select("#ingfunctions");
@@ -161,23 +138,16 @@ function writeoutdata() {
     gbutton.style("display" , "none");
 }
 
-function draw() {
-    background(0);
-}
-
-function createInventory() {
+function createGroceryList() {
+    console.log("Creating GroceryList...");
     inventory = [];
     for (let i = 0; i < rand_recipes.length; i++) {
         inventory.push(rand_recipes[i].recipeIngredient);
-    }
-    
-//    console.log(inventory);
+        }
     let merged = []
     for (let i = 0; i < inventory.length; i++) {
         merged = merged.concat(inventory[i]);
-    }
-    
-//    console.log(merged);
+        }
     let helper = {};
     
     grocerylist = merged.reduce(function(r, o) {
@@ -194,10 +164,14 @@ function createInventory() {
     grocerylist = grocerylist.sort(function(a,b){
         return a.type.toLowerCase().localeCompare(b.type.toLowerCase());
         });
-//    console.log(grocerylist);
+    
+    if (groceryListDisplay == true) {
+        displayGroceryList()
+        }
 }
 
-function writeInventory() {
+function displayGroceryList() {
+    console.log("Showing GroceryList...");
     let row;
     let cell1;
     let cell2;
@@ -205,7 +179,7 @@ function writeInventory() {
     let cell4;
     
     ibutton.style("display" , "none")
-    rbutton.style("display" , "inline")
+    hbutton.style("display" , "inline")
 
     let inglistbody = document.getElementById("inglistbody");
     for (let i = 0; i < grocerylist.length; i++) {
@@ -221,18 +195,35 @@ function writeInventory() {
         cell4.innerHTML = grocerylist[i].uom;
     }
     let ingtable  = select("#ingtable");
-    ingtable.style("display" , "table")
+    ingtable.style("display" , "table");
+    groceryListDisplay = true;
+    console.log(groceryListDisplay);
 }
 
 function refreshInventory() {
-    console.log("refreshed")
-    
+    console.log("Refreshing...");
     let inglistbody = document.getElementById("inglistbody");
         while(inglistbody.hasChildNodes()) {
             inglistbody.removeChild(inglistbody.firstChild);
             }
-    
-    
-    writeInventory()
-    console.log("done")
+    if (groceryListDisplay == true) {
+        createGroceryList()
+    }
+
+    displayMenu()
 }
+
+function hideGroceryList() {
+    console.log("Hiding GroceryList...");
+    let ingtable  = select("#ingtable");
+        ingtable.style("display" , "none");
+        ibutton.style("display" , "inline");
+        hbutton.style("display" , "none");
+    
+    groceryListDisplay = false;
+    console.log(groceryListDisplay);
+}
+
+
+
+

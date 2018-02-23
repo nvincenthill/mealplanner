@@ -1512,5 +1512,63 @@
             "They are great plain, but sometimes I serve them with a light vinaigrette if we need something acidic to balance out our meal."
         ],
       "recipeYield": "12 cookies"
+   },
+    
+    {
+      "@context": "https://github.com/nvincenthill/nvincenthill.github.io",
+      "@type": "Restaurant",
+      "author": "Nicholas Vincent-Hill",
+      "cookTime": "",
+      "datePublished": "2018-22-2018",
+      "description": "A rustic neighborhood restaurant serving the American brasserie experience",
+      "image": "wtavern.jpg",
+      "recipeIngredient": [],
+      "interactionStatistic": {
+        "@type": "InteractionCounter",
+        "interactionType": "https://github.com/nvincenthill/nvincenthill.github.io/Comment",
+        "userInteractionCount": "5"
+      },
+      "name": "Wood Tavern",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "calories": "1200 calories",
+        "carbohydrateContent": "12 carbs",
+        "proteinContent": "9 grams of protein",
+        "fatContent": "9 grams fat"
+      },
+      "prepTime": "PT15M",
+      "recipeInstructions": [],
+      "recipeYield": "",
+      "lat": 37.85,
+      "lng": -122.25  
+   },
+    
+    {
+      "@context": "https://github.com/nvincenthill/nvincenthill.github.io",
+      "@type": "Restaurant",
+      "author": "Nicholas Vincent-Hill",
+      "cookTime": "",
+      "datePublished": "2018-22-2018",
+      "description": "Neighborhood bistro offering modern & classic Italian cuisine served in a cozy space",
+      "image": "belotti.jpg",
+      "recipeIngredient": [],
+      "interactionStatistic": {
+        "@type": "InteractionCounter",
+        "interactionType": "https://github.com/nvincenthill/nvincenthill.github.io/Comment",
+        "userInteractionCount": "5"
+      },
+      "name": "Belotti Ristorante",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "calories": "1200 calories",
+        "carbohydrateContent": "12 carbs",
+        "proteinContent": "9 grams of protein",
+        "fatContent": "9 grams fat"
+      },
+      "prepTime": "PT15M",
+      "recipeInstructions": [],
+      "recipeYield": "",
+      "lat": 37.84,
+      "lng": -122.25
     }
 ]

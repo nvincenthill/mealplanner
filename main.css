@@ -124,6 +124,17 @@ img:hover {-webkit-filter:none;}
     outline: none !important;
 }
 
+.btn-default:focus {
+    margin-top: 5pt;
+    font-family: 'Oswald';
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 1px;
+    outline: none !important;
+    background-color: white;
+}
+
 #rbutton {
     display: none;
 }
@@ -195,6 +206,17 @@ img:hover {-webkit-filter:none;}
     background-color: white;
 }
 
+.btn-warning:focus {
+    font-family: 'Oswald';
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 1px;
+    background-color: white;
+    color: #ff9800;
+    outline: none !important;
+}
+
 .btn {
     outline: none !important;
 }
@@ -247,15 +269,62 @@ img:hover {-webkit-filter:none;}
     text-align: center;
     font-weight: 600;
     margin-top: 0;
-    margin-bottom: 15px;
-}
-
-.close {
-
+    margin-bottom: 10px;
 }
 
 .myname {
     text-decoration: none;
     color: black;
     font-weight: bold;
+}
+
+.btn-hide {
+
+}
+
+#hbutton {
+    font-family: 'Oswald';
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 23px;
+    letter-spacing: 2px;
+/*    outline: none !important;*/
+    background-color: black;
+    display: none;
+}
+
+.btn-lg {
+    outline: none;
+}
+
+
+
+.modal-body {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#map {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.directionsheader {
+    font-family: 'Oswald';
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.modalmaps {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:400px;
+    height:400px;
+    background:yellow
 }
